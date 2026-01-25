@@ -7,11 +7,14 @@ import { PlansPage } from "./pages/PlansPage";
 
 //import { LandingPage } from "./pages/LandingPage";
 
+
 function App() {
+  console.log("App is rendering");
   return (
     <Routes>
       <Route path="/" element={<PlansPage />} />
       <Route path="/checkout/:planId" element={<CheckoutPage />} />
+      <Route path="/plans" element={<PlansPage />} />
     </Routes>
   );
 }
