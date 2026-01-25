@@ -1,15 +1,13 @@
-import { useLocation } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
   const { pathname } = useLocation();
 
   const onHomePage = pathname.slice(0, 5) === "/home";
-  const onAboutUsPage = pathname.slice(0, 6) === "/aboutus";
+  const onAboutUsPage = pathname.slice(0, 8) === "/aboutus";
   const onPlansPage = pathname.slice(0, 6) === "/plans";
-  const onInvestPage = pathname.slice(0, 6) === "/invest";
-  const onTutorialPage = pathname.slice(0, 6) === "/tutorial";
-  const onFaqPage = pathname.slice(0, 6) === "/faq";
+  const onFaqPage = pathname.slice(0, 4) === "/faq";
 
   return (
     <header className="w-full flex justify-between items-center text-slate-800 shadow-md py-2">
