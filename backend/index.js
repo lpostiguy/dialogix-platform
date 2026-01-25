@@ -1,15 +1,29 @@
 const express = require("express");
 const Stripe = require("stripe");
 const cors = require("cors");
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
 const app = express();
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+
+if (!process.env.STRIPE_SECRET_KEY) {
+  console.error(
+    "Error: STRIPE_SECRET_KEY is missing in environment variables.",
+  );
+}
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? Stripe(process.env.STRIPE_SECRET_KEY)
+  : null;
 
 app.use(cors());
 app.use(express.json());
 
 app.post("/api/create-payment-intent", async (req, res) => {
+  if (!stripe) {
+    return res
+      .status(500)
+      .send({ error: "Stripe API Key is missing on Server." });
+  }
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 1999,
