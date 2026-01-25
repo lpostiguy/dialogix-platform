@@ -9,11 +9,11 @@ It uses **React (frontend)** and **Node.js (backend)** to simulate the checkout 
 
 ### Plan Page
 
-![Plan Page Screenshot](./assets/Screenshot%201.png)
+![Plan Page Screenshot](./assets/Screenshot%201.avif)
 
 ### Payment Page
 
-![Payment Page Screenshot](./assets/Screenshot%202.png)
+![Payment Page Screenshot](./assets/Screenshot%202.avif)
 
 ---
 
