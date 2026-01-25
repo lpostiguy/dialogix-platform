@@ -26,4 +26,8 @@ app.post("/create-payment-intent", async (req, res) => {
     }
 });
 
-app.listen(4242, () => console.log("Server running on port 4242"));
+if (require.main === module) {
+  app.listen(4242, () => console.log("Server running on port 4242"));
+}
+
+module.exports = app;

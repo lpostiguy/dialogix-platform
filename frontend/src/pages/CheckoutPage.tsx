@@ -106,7 +106,7 @@ export const CheckoutPage = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4242/create-payment-intent", {
+    fetch("/api/create-payment-intent", {
       method: "POST",
     })
       .then((res) => res.json())
