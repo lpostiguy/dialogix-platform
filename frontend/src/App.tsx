@@ -12,7 +12,6 @@ function App() {
     <Routes>
       <Route path="/" element={<PlansPage />} />
       <Route path="/checkout/:planId" element={<CheckoutPage />} />
-      <Route path="/plans" element={<PlansPage />} />
     </Routes>
   );
 }
