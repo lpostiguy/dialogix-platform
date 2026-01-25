@@ -9,7 +9,6 @@ import { PlansPage } from "./pages/PlansPage";
 
 
 function App() {
-  console.log("App is rendering");
   return (
     <Routes>
       <Route path="/" element={<PlansPage />} />

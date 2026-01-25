@@ -9,21 +9,21 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 app.use(cors());
 app.use(express.json());
 
-app.post("/create-payment-intent", async (req, res) => {
-    try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: 1999,
-            currency: "usd",
-            automatic_payment_methods: { enabled: true },
-        });
+app.post("/api/create-payment-intent", async (req, res) => {
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: 1999,
+      currency: "usd",
+      automatic_payment_methods: { enabled: true },
+    });
 
-        res.send({
-            clientSecret: paymentIntent.client_secret,
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ error: error.message });
-    }
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: error.message });
+  }
 });
 
 if (require.main === module) {
