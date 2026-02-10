@@ -1,5 +1,8 @@
 # Stripe Payment Flow Practice (React + Node)
 
+## 🔗 Live Demo
+You can preview the project, hosted here: [dialogix-platform.vercel.app](https://dialogix-platform.vercel.app/)
+
 This project is a **practice implementation** of a payment flow inspired.
 It uses **React (frontend)** and **Node.js (backend)** to simulate the checkout process with **Stripe Payment Elements**.
 
