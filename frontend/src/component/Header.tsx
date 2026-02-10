@@ -7,7 +7,6 @@ export const Header = () => {
   const onHomePage = pathname.slice(0, 5) === "/home";
   const onAboutUsPage = pathname.slice(0, 8) === "/aboutus";
   const onPlansPage = pathname.slice(0, 6) === "/plans";
-  const onFaqPage = pathname.slice(0, 4) === "/faq";
 
   return (
     <header className="w-full flex justify-between items-center text-slate-800 shadow-md py-2">
@@ -43,19 +42,14 @@ export const Header = () => {
         >
           About us
         </a>
-        <a
-          href="/faq"
-          className={` ${
-            onFaqPage && "bg-slate-100 font-semibold text-blue-500"
-          } px-4 py-2 rounded-xl hover:bg-slate-100 transition duration-300 ease-in-out cursor-pointer`}
-        >
-          FAQ
-        </a>
       </div>
       <div className="w-52 flex justify-start">
-        <button className="rounded-xl bg-[#448AFF] px-5 py-2 text-slate-100 font-semibold transition ease-in-out duration-300 hover:bg-opacity-80">
+        <a
+          href="/chat"
+          className="rounded-xl bg-[#448AFF] px-5 py-2 text-slate-100 font-semibold transition ease-in-out duration-300 hover:bg-opacity-80"
+        >
           Start Chatting
-        </button>
+        </a>
       </div>
     </header>
   );

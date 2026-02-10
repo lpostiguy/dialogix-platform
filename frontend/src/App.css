@@ -20,10 +20,21 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   background-color: #ffffff;
-  min-width: 320px;
   min-height: 100vh;
+  height: 100%;
   overflow-x: hidden;
 }
+
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(183, 182, 182) #e2e8f0;
+  resize: none;
+}
+
+.chat-area {
+    scrollbar-width: thin;
+  scrollbar-color: rgb(183, 182, 182) #e2e8f0;
+  resize: none;
+}
+

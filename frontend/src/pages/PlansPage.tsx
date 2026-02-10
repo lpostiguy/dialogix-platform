@@ -1,8 +1,8 @@
-import { useState } from "react";
-import logoStandard from "../assets/svg/Logo_standard.svg";
-import logoPremium from "../assets/svg/Logo_premium.svg";
-import checkMark from "../assets/svg/Check_mark.svg";
 import { Header } from "../component/Header";
+import checkMark from "../assets/svg/Check_mark.svg";
+import logoPremium from "../assets/svg/Logo_premium.svg";
+import logoStandard from "../assets/svg/Logo_standard.svg";
+import { useState } from "react";
 
 export const PlansPage = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">(
@@ -56,9 +56,12 @@ export const PlansPage = () => {
                 <h1 className="font-semibold text-3xl">FREE</h1>
                 <p className="font-semibold text-slate-500">per month</p>
               </div>
-              <button className="bg-blue-500 hover:bg-opacity-90 transition duration-300 ease-in-out text-neutral-50 py-2 w-full flex justify-center px-4 rounded-lg shadow-md">
+              <a
+                href="/chat"
+                className="bg-blue-500 hover:bg-opacity-90 transition duration-300 ease-in-out text-neutral-50 py-2 w-full flex justify-center px-4 rounded-lg shadow-md"
+              >
                 Continue with Standard
-              </button>
+              </a>
               <div>
                 <h3 className="font-semibold text-lg">Get Started Fast</h3>
                 <ul className="space-y-2 flex flex-col justify-center">
