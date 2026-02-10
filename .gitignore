@@ -1,3 +1,6 @@
 node_modules/
 .env
 .vscode/
+/build
+/frontend/build
+/frontend/node_modules

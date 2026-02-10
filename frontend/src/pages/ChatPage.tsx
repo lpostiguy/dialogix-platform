@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import AiPng from "../assets/images/ai-technology.png";
 import { Header } from "../component/Header";
 import MicrophonePng from "../assets/images/microphone-black.png"
-import SendPng from "../assets/images/Send.png"
+import SendPng from "../assets/images/send.png";
 import TypewriterEffect from "../component/TypewriterEffect";
 
 interface Message {
@@ -27,108 +27,116 @@ export const ChatPage = () => {
     if (message.trim() === "") return;
     setMessages((prevMessages) => [
       ...prevMessages,
-      { id: Date.now(), index: messages.length + 1, text: message, sender: sender },
+      {
+        id: Date.now(),
+        index: messages.length + 1,
+        text: message,
+        sender: sender,
+      },
     ]);
     setInput("");
   };
 
-const assistantPaymentList = new Set([
-  "pay",
-  "payment",
-  "price",
-  "cost",
-  "buy",
-  "purchase",
-  "billing",
-  "invoice",
-  "card",
-  "checkout",
-  "subscription",
-  "plan",
-  "money",
-  "receipt",
-]);
+  const assistantPaymentList = new Set([
+    "pay",
+    "payment",
+    "price",
+    "cost",
+    "buy",
+    "purchase",
+    "billing",
+    "invoice",
+    "card",
+    "checkout",
+    "subscription",
+    "plan",
+    "money",
+    "receipt",
+  ]);
 
-const assistantSmalltalkList = new Set([
-  "hi",
-  "hello",
-  "hey",
-  "how",
-  "sup",
-  "morning",
-  "afternoon",
-  "evening",
-  "weather",
-  "doing",
-  "name",
-  "who",
-  "thanks",
-  "thank",
-]);
+  const assistantSmalltalkList = new Set([
+    "hi",
+    "hello",
+    "hey",
+    "how",
+    "sup",
+    "morning",
+    "afternoon",
+    "evening",
+    "weather",
+    "doing",
+    "name",
+    "who",
+    "thanks",
+    "thank",
+  ]);
 
-const assistantHelpList = new Set([
-  "help",
-  "support",
-  "broken",
-  "issue",
-  "error",
-  "problem",
-  "fix",
-  "guide",
-  "how-to",
-  "question",
-  "manual",
-  "stuck",
-  "contact",
-]);
-const assistantPaymentListResponse = [
-  "We currently support a wide variety of payment methods including all major credit cards (Visa, Mastercard, Amex), PayPal, and even Apple Pay for a faster checkout experience.",
-  "You can easily manage your invoices and view your entire billing history by navigating to the 'Settings' tab in your dashboard and selecting 'Billing & Subscriptions'.",
-  "Our Pro plan is currently priced at $12.99 per month. However, if you choose our annual billing option, it's only $117 for the entire year, which saves you quite a bit!",
-  "I'd be more than happy to assist with your payment questions! Could you please let me know if you're looking to upgrade your account, request a refund, or update your saved card details?",
-];
+  const assistantHelpList = new Set([
+    "help",
+    "support",
+    "broken",
+    "issue",
+    "error",
+    "problem",
+    "fix",
+    "guide",
+    "how-to",
+    "question",
+    "manual",
+    "stuck",
+    "contact",
+  ]);
+  const assistantPaymentListResponse = [
+    "We currently support a wide variety of payment methods including all major credit cards (Visa, Mastercard, Amex), PayPal, and even Apple Pay for a faster checkout experience.",
+    "You can easily manage your invoices and view your entire billing history by navigating to the 'Settings' tab in your dashboard and selecting 'Billing & Subscriptions'.",
+    "Our Pro plan is currently priced at $12.99 per month. However, if you choose our annual billing option, it's only $117 for the entire year, which saves you quite a bit!",
+    "I'd be more than happy to assist with your payment questions! Could you please let me know if you're looking to upgrade your account, request a refund, or update your saved card details?",
+  ];
 
-const assistantSmalltalkListResponse = [
-  "Hey there! It's a pleasure to meet you. I hope your day is going smoothly so far. How can I assist you with your project today?",
-  "Hello! I am your dedicated digital assistant. I'm designed to help you navigate this platform and answer any questions you might have about our services.",
-  "Hi! I was actually just sitting here processing some data and thinking about clean code. It's always great to have someone to talk to—what's on your mind?",
-  "I'm doing fantastic, thank you for asking! My circuits are fully charged and I'm ready to work. Is there anything specific I can do to make your life easier right now?",
-];
+  const assistantSmalltalkListResponse = [
+    "Hey there! It's a pleasure to meet you. I hope your day is going smoothly so far. How can I assist you with your project today?",
+    "Hello! I am your dedicated digital assistant. I'm designed to help you navigate this platform and answer any questions you might have about our services.",
+    "Hi! I was actually just sitting here processing some data and thinking about clean code. It's always great to have someone to talk to, what's on your mind?",
+    "I'm doing fantastic, thank you for asking! My circuits are fully charged and I'm ready to work. Is there anything specific I can do to make your life easier right now?",
+  ];
 
-const assistantHelpListResponse = [
-  "I'm truly sorry to hear that you're running into some technical trouble. To help me troubleshoot this for you, could you please describe the error or tell me what happened right before it occurred?",
-  "If you're looking for a quick walkthrough, I highly recommend checking out our official documentation at /docs. It includes step-by-step guides and video tutorials for almost every feature.",
-  "I'm here to help get this sorted out! Just to clarify, is this issue related to your personal account settings, or are you having trouble with one of the website's specific features?",
-  "I've officially flagged this for one of our human team members to review. While they're getting up to speed, feel free to give me a little more detail about what you're experiencing.",
-];
+  const assistantHelpListResponse = [
+    "I'm truly sorry to hear that you're running into some technical trouble. To help me troubleshoot this for you, could you please describe the error or tell me what happened right before it occurred?",
+    "If you're looking for a quick walkthrough, I highly recommend checking out our official documentation at /docs. It includes step-by-step guides and video tutorials for almost every feature.",
+    "I'm here to help get this sorted out! Just to clarify, is this issue related to your personal account settings, or are you having trouble with one of the website's specific features?",
+    "I've officially flagged this for one of our human team members to review. While they're getting up to speed, feel free to give me a little more detail about what you're experiencing.",
+  ];
 
-const randomResponse = (responseArray: string[]) => {
-  const randomIndex = Math.floor(Math.random() * responseArray.length);
-  return responseArray[randomIndex];
-};
+  const randomResponse = (responseArray: string[]) => {
+    const randomIndex = Math.floor(Math.random() * responseArray.length);
+    return responseArray[randomIndex];
+  };
 
-const getAssistantIntent = (userInput: string) => {
-  const words = userInput
-    .toLowerCase()
-    .replace(/[?.,!]/g, "")
-    .split(" ");
+  const getAssistantIntent = (userInput: string) => {
+    const words = userInput
+      .toLowerCase()
+      .replace(/[?.,!]/g, "")
+      .split(" ");
 
     let assistantPaymentListCount = 0;
     let assistantHelpListCount = 0;
     let assistantSmalltalkListCount = 0;
 
-  for (let word of words) {
-    if (assistantPaymentList.has(word)) assistantPaymentListCount += 1;
-    if (assistantHelpList.has(word)) assistantHelpListCount += 1;
-    if (assistantSmalltalkList.has(word)) assistantSmalltalkListCount += 1;
-  }
-  
-  if (assistantPaymentListCount > 0) return randomResponse(assistantPaymentListResponse);
-  if (assistantHelpListCount > 0) return randomResponse(assistantHelpListResponse);
-  if (assistantSmalltalkListCount > 0) return randomResponse(assistantSmalltalkListResponse);
+    for (let word of words) {
+      if (assistantPaymentList.has(word)) assistantPaymentListCount += 1;
+      if (assistantHelpList.has(word)) assistantHelpListCount += 1;
+      if (assistantSmalltalkList.has(word)) assistantSmalltalkListCount += 1;
+    }
 
-  return randomResponse(assistantSmalltalkListResponse);
-};
+    if (assistantPaymentListCount > 0)
+      return randomResponse(assistantPaymentListResponse);
+    if (assistantHelpListCount > 0)
+      return randomResponse(assistantHelpListResponse);
+    if (assistantSmalltalkListCount > 0)
+      return randomResponse(assistantSmalltalkListResponse);
+
+    return randomResponse(assistantSmalltalkListResponse);
+  };
 
   useEffect(() => {
     if (messages.length === 0) return;
