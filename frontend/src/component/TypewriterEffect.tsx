@@ -41,7 +41,7 @@ useEffect(() => {
     <span>
       {displayedText}
       {displayedText.length < text.length - 1 ? (
-        <span className="inline-block w-1 h-5 ml-1 bg-slate-800 animate-pulse align-middle" />
+        <span className="inline-block w-0.5 h-5 ml-1 bg-slate-800 animate-pulse align-middle" />
       ) : (
         <button
           className="m-1 p-2 rounded-full bg-slate-200 hover:bg-slate-300 duration-300 ease-in-out"

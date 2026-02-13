@@ -17,6 +17,7 @@ function App() {
         <Route path="/checkout/:planId" element={<CheckoutPage />} />
         <Route path="/plans" element={<PlansPage />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/home" element={<ChatPage />} />
       </Routes>
       <Footer />
     </>
